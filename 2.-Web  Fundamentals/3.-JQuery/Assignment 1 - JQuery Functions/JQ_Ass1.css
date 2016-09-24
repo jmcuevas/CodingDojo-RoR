@@ -1,0 +1,32 @@
+.subject {
+  color: white;
+  display: inline-block;
+  background-color: gray;
+  border: solid 1px black;
+  width: 200px;
+  height: 200px;
+}
+
+.func_expl {
+  border-bottom: 2px gray solid;
+}
+
+.but1 {
+  width: auto;
+  height: auto;
+  background: yellow;
+  border: 2px black solid;
+  border-radius: 5px;
+  font-size: 3em;
+  font-weight: bolder;
+  vertical-align: top;
+}
+
+h1 {
+  text-decoration: underline;
+  font-size: 3em;
+}
+
+.red {
+  background-color: red;
+}

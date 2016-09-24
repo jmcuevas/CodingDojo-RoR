@@ -1,0 +1,141 @@
+body {
+	width: 970px;
+	font-family: sans-serif;
+	font-size: .75em;
+	margin: 0px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+#last-container {
+	margin-right: 0px;
+}
+
+
+.header {
+	background-color: #E9E9E9;
+	height: 150px;
+	}
+
+	.header-top {
+		padding: 5px 20px;
+	}
+
+	.header-top h1 {
+		display: inline-block;
+		text-align: right;
+		vertical-align: middle;
+		float: right;
+	}
+
+	.header-top img {
+		vertical-align: middle;
+	}
+
+	.header-menu-list {
+		margin: 0px;
+		border-top: gray 1px solid;
+		background: linear-gradient(#F3F6F7, #E2E7EB) ;
+	}
+
+	.header-menu-button {
+		color: gray;
+		display: inline-block;
+		margin: 0px;
+		padding: 15px 20px;
+		/*border-right: 2px solid gray;
+		border-left: 2px solid gray;
+		border-collapse: collapse;*/
+		box-shadow: 0px 0px  5px  0px gray;
+	}
+
+.main {
+	background-color: #000000;
+	padding: 20px;
+	}
+
+	.main-top {
+
+		}
+
+		.main-top img {
+			display: inline-block;
+			border: white 4px solid;
+			vertical-align: top;
+		}
+
+		.main-top-description {
+			background: linear-gradient(to right, #737371,#393939);
+			color: white;
+			width: 533px;
+			display: inline-block;
+			vertical-align: top;
+			margin-left: 8px;
+			height: 263px;
+			padding-bottom: 0px;
+		}
+
+		.main-top-description div {
+			padding: 10px;
+		}
+
+	.main-middle {
+		color: #FFCE42;
+		padding: 5px;
+		}
+
+		.main-middle p{
+			margin: 0px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		.main-middle img {
+			height: 20px;
+			width: 80px;
+			vertical-align: middle;
+			margin-right: 15px;
+		}
+
+	.main-bottom {
+
+		}
+
+		.main-bottom-container h3, .main-top-description h2{
+			background: linear-gradient(#FFD04D, #FCC700);
+			margin: 0px;
+			color: black;
+			padding: 10px;
+		}
+		.main-bottom-container {
+			background: linear-gradient(#FFFEFF, #FFF3DB);
+			display: inline-block;
+			width: 222px;
+			vertical-align: top;
+			margin-right: 14px;
+		}
+
+		.main-bottom-container div {
+			padding: 10px;
+			display: inline-block;
+			height: 150px;
+		}
+
+		.main-bottom-container img {
+			width: 222px;
+			height: 100px;
+		}
+
+		.main-bottom-container button {
+			background-color: #FFC500;
+			border: 2px black solid;
+			color: black;
+			border-radius: 5px;
+			position: relative;
+			bottom: -15px;
+			left: 75px;
+			vertical-align: top;
+		}
+

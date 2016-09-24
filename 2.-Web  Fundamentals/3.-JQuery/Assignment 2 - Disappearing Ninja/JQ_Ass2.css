@@ -1,0 +1,43 @@
+/*
+Jose M. Cuevas
+September 23rd, 2016
+jQuery Assignment 2 - Disappearing Ninja
+*/
+
+body {
+  color: gray;
+  background-color: black;
+}
+
+.ninja_image {
+  width: 300px;
+  height: 300px;
+}
+
+button {
+  width: auto;
+  height: auto;
+  color: gray;
+  background-color: #003366;
+  font-weight: bolder;
+  font-size: 2em;
+  border: gray 5px solid;
+  box-shadow: gray 2px 2px 10px;
+}
+
+button:hover {
+  color: white;
+}
+
+button:active {
+  border: none;
+}
+
+img {
+  border-radius: 150px;
+  margin: 20px;
+}
+
+img:hover {
+  box-shadow: gray 0px 0px 50px;
+}
