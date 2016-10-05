@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Assignment 5 - Adding a User</title>
+    <link rel="stylesheet" href="JQ_Ass5.css" type="text/css">
+    <script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script type="text/javascript" src="JQ_Ass5.js"></script>
+  </head>
+  <body>
+    <table id="newUsers">
+      <tbody>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email Address</th>
+          <th>Contact #</th>
+        </tr>
+      </tbody>
+    </table>
+    <div class="form_cont">
+      <h1>Add User</h1>
+      <form class="add_user" action="JQ_Ass5.php" method="post">
+        First Name: <input type="text" name="first_name" placeholder="First Name" value=""><br>
+        Last Name: <input type="text" name="last_name" placeholder="Last Name" value=""><br>
+        Email Address: <input type="text" name="email" placeholder="Email Address" value=""><br>
+        Contact No.: <input type="text" name="phone" placeholder="Phone #" value=""><br>
+        <input type="submit" name="add_button" value="Add User">
+      </form>
+    </div>
+  </body>
+</html>

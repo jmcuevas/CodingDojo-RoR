@@ -1,0 +1,9 @@
+.image_container {
+  display: inline-block;
+  width: 960px;
+  height: 108px;
+  background-image: url('img1.jpg');
+  background-repeat: no-repeat;
+  background-size: 960px 540px;
+  background-position: 0px 0px;
+}
