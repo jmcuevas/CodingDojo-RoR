@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script type="text/javascript">
+      $('document').ready( function() {
+
+        $('#pokemon_id_form').submit(function(){
+          var pokemon_id = $('input[name="pokemon_id"]').val();
+          console.log(pokemon_id);
+
+          $.get('http://pokeapi.co/api/v1/pokemon/' + pokemon_id + '/', function(data){
+            console.log(data);
+            var abilities = "";
+            for (var i=0; i < data.abilities.length; i++) {
+               var ability = data.abilities[i].name;
+               abilities += ability;
+            }
+            console.log(abilities);
+
+            $('.pokemon_info').text("");
+            $('.pokemon_info').append('<h2>Name: ' + data.name + '</h2>');
+            $('.pokemon_info').append('<p>Attack: ' + data.attack + '</p>');
+            $('.pokemon_info').append('<p>Defense: ' + data.defense + '</p>');
+            $('.pokemon_info').append('<p>Happiness: ' + data.happiness + '</p>');
+            $('.pokemon_info').append('<p>Abilities: ' + data.abilities[0].name + ', ' + data.abilities[1].name +  '</p>');
+            $('.pokemon_info').append('<img src="http://pokeapi.co/media/img/'+ pokemon_id + '.png"/>');
+          //   $('.pokemon_info').append('<p>Abilities: ' + for (var i=0; i < data.abilities.length; i++) {
+          //                                                  var ability = data.abilities[i].name;
+          //                                                  return ability + ", '+'";
+          //                                               } + '</p>');
+          //
+          }, 'json');
+          return false;
+        });
+
+        // $.post(url, data, function(data){
+        //   console.log(data);
+        // }, 'json');
+
+
+      });
+    </script>
+  </head>
+  <body>
+    <form  id="pokemon_id_form" action="" method="post">
+      <input type="text" name="pokemon_id" placeholder="Write the pokemon id">
+      <input type="submit" value="Submit">
+    </form>
+    <div class="pokemon_info">
+
+    </div>
+  </body>
+</html>

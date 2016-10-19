@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+Jose M Cuevas
+Orange Belt Exam
+Coding Dojo & Bellevue College Ruby on Rails Evening Bootcamp
+October 8th, 2016
+ -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Orange Belt - Jose M Cuevas</title>
+    <link rel="stylesheet" href="orange_belt.css">
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="orange_belt.js"></script>
+  </head>
+  <body>
+
+    <!-- Contains the header with the tile section representing each language
+    and the form that allows to add new languages to the tiles -->
+    <div class="header">
+      <img src="header.png" alt="" />
+      <div class="tile_holder">
+        <div class="tile" lang-type="script" id="lamp"></div>
+        <div class="tile" lang-type="script" id="mean"></div>
+        <div class="tile" lang-type="script" id="python"></div>
+        <div class="tile" lang-type="script" id="ruby"></div>
+        <div class="tile" lang-type="compiled" id="swift"></div>
+      </div>
+      <div class="header_bottom">
+        <h3>Add your own tiles with just text:</h3>
+        <form class="add_tile" action="#" method="post">
+          <input type="text" id="lang_name" value="">
+          <input type="submit" name="add_tile" value="Submit">
+        </form>
+      </div>
+    </div>
+
+    <!-- Contains two sides with the description of the language type and the
+    description of the selected language -->
+    <div class="main">
+      <div class="main_left">
+        <p class="script_lang">
+          A <span class="highlight">scripting or script language</span> is a programming language that supports scripts, programs written for a special run-time environment that automate the execution of tasks that could alternatively be executed one-by-one by a human operator. Scripting languages are often interpreted (rather than compiled).
+        </p>
+        <p class="compiled_lang">
+          A <span class="highlight">compiled language</span> is a programming language whose implementations are typically compilers (translators that generate machine code from source code), and not interpreters (step-by-step executors of source code, where no pre-runtime translation takes place). The term is somewhat vague.
+        </p>
+      </div><!--
+      --><div class="main_right">
+        <p>
+          <span class="highlight">LAMP</span> is an archetypal model of web service solution stacks, named as an acronym of the names of its original four open-source components: the Linux operating system, the Apache HTTP Server, the MySQL relational database management system (RDBMS), and the PHP programming language. The LAMP components are largely interchangeable and not limited to the original selection. As a solution stack, LAMP is suitable for building dynamic web sites and web applications.
+        </p>
+      </div>
+    </div>
+
+    <!-- Contains the form to add comments and the log of previus coments -->
+    <div class="comments">
+      <h2>Insert a comment:</h2>
+      <form class="add_comment" action="#" method="post">
+        <input type="text" id="comment" name="comment" placeholder="Please write a comment">
+        <input type="submit" name="add_comment" value="Comment">
+      </form>
+      <div class="comment_insert">
+      </div>
+    </div>
+  </body>
+</html>

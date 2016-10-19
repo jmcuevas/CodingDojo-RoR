@@ -1,0 +1,18 @@
+.pokedex {
+  display: inline-block;
+  border: 10px solid red;
+  width: 20%;
+  min-width: 300px;
+  vertical-align: top;
+  position: fixed;
+  float: left;
+}
+
+.poke_catalogue {
+  display: inline-block;
+  width: 70%;
+  vertical-align: top;
+  float: left;
+  float: right;
+  clear: both;
+}

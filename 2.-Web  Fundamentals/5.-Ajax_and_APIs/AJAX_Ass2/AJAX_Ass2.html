@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Assignment 2 - Pokemon</title>
+    <link rel="stylesheet" href="AJAX_Ass2.css" type="text/css">
+    <script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script type="text/javascript">
+      $('document').ready( function() {
+        for (var i=1; i<150; i++) {
+          $('.poke_catalogue').append('<img id="' + i + '" src="http://pokeapi.co/media/img/'+ i + '.png"/>');
+        }
+
+      $('.poke_catalogue').on("click", "img", function(){
+        var pokemon_id = $(this).attr("id");
+
+        get_pokemon_info(pokemon_id);
+      });
+
+      function get_pokemon_info(poke_id) {
+        $.get('http://pokeapi.co/api/v1/pokemon/' + poke_id + '/', function(data){
+          // console.log(data);
+
+          $('.pokedex').text("");
+          $('.pokedex').append('<h2>Name: ' + data.name + '</h2>');
+          $('.pokedex').append('<p>Attack: ' + data.attack + '</p>');
+          $('.pokedex').append('<p>Defense: ' + data.defense + '</p>');
+          $('.pokedex').append('<p>Happiness: ' + data.happiness + '</p>');
+          $('.pokedex').append('<p>Abilities: ' + data.abilities[0].name + ', ' + data.abilities[1].name +  '</p>');
+          $('.pokedex').append('<img src="http://pokeapi.co/media/img/'+ poke_id + '.png"/>');
+        }, 'json');
+      }
+
+      })
+    </script>
+  </head>
+  <body>
+    <div class="pokedex">
+
+    </div>
+    <div class="poke_catalogue">
+
+    </div>
+
+  </body>
+</html>
