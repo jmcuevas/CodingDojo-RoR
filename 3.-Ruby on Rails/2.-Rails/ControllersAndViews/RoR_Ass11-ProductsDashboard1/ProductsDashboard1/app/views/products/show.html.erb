@@ -1,0 +1,15 @@
+<h1>Product # <%= @product.id %></h1>
+
+<h2>Name: </h2>
+    <p><%= @product.name %> </p>
+<h2>Description: </h2>
+    <p><%= @product.description %> </p>
+<h2>Price: </h2>
+    <p>$<%= @product.pricing %> </p>
+
+<a href="/products/<%= @product.id %>/edit">Edit</a>
+<form action="/products/<%= @product.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="submit" value="delete">
+</form>
