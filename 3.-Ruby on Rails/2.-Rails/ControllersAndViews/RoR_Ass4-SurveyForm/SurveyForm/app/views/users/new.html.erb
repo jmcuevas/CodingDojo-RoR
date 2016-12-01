@@ -1,0 +1,10 @@
+<h1>Create a new user</h1>
+<form action="users/create" method="post">
+    <label for="user[name]">Name: <input type="tex" name="user[name]" value=""></label><br>
+    <label for="user[location]">Dojo Location: <input type="text" name="user[location]" value=""></label><br>
+    <label for="user[languaje]">Languaje: <input type="text" name="user[languaje]" value=""></label><br>
+    <label for="user[comment]">Comment: <textarea rows="4" cols="50" name="user[comment]" value=""></textarea><br>
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input type="submit" value="Create User">
+
+</form>

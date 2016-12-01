@@ -1,0 +1,6 @@
+<h1>Form to Edit Users</h1>
+<% name = User.find(params[:id]).name %>
+<form action="">
+    <input type="text" name="name" value="<%=name%>" >
+    <input type="submit" value="Update">
+</form>
