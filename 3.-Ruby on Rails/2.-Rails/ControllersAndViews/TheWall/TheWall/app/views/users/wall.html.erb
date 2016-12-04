@@ -1,0 +1,54 @@
+<div id="header">
+    <h1>Coding Dojo Wall</h1>
+    <p>Welcome <%= session[:first_name] %></p>
+    <a href="/logout">Logout</a>
+</div>
+
+<!-- Post a Message form -->
+<div>
+    <h3>Post a message</h3>
+    <% if flash[:message_errors] != nil %>
+        <% flash[:message_errors].each do |error| %>
+            <p><%= error %></p>
+        <% end %>
+    <% end %>
+    <form action="/messages/create" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <textarea name="message" rows="8" cols="80" placeholder="Write your message here!"></textarea>
+        <input type="submit" value="Post a message">
+    </form>
+</div>
+
+
+<!-- Display all messages -->
+<!-- have a for loop looping through all messages -->
+
+<div class="messages_container">
+    <!-- Display the errors on top of the messages div -->
+    <% if flash[:comment_errors] != nil %>
+        <% flash[:comment_errors].each do |error| %>
+            <p><%= error %></p>
+        <% end %>
+    <% end %>
+    <!-- Display the messages -->
+    <% @messages.each do |msg| %>
+    <div class="message">
+        <h4><%= msg.user.full_name %> - <%= msg.created_at %></h4>
+        <p><%= msg.message %></p>
+    </div>
+    <!-- Display all the comments -->
+    <% msg.comments.each do |cmt| %>
+    <div class="comment">
+        <h5><%= cmt.user.full_name %> - <%= cmt.created_at %></h5>
+        <p><%= cmt.comment %></p>
+    </div>
+    <% end %>
+    <!-- Create Comment form -->
+    <form action="/comment/create" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="message_id" value="<%= msg.id %>">
+        <textarea name="comment" rows="2" cols="60" placeholder="Write your comment here!"></textarea>
+        <input type="submit" value="Post a comment">
+    </form>
+    <% end %>
+</div>
