@@ -1,0 +1,71 @@
+<h1 class="text-center"><%= logged_in_user.alias %>, Tell us your great idea!</h1>
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <form action="/bright_ideas/create" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="bright_idea[user_id]" value="<%= logged_in_user.id %>">
+            <div class="form-group col-md-10">
+                <textarea type="text" name="bright_idea[content]" rows="1" class="form-control"></textarea>
+            </div>
+            <input type="submit" value="Idea!" class="btn btn-primary">
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <!-- Idea Container -->
+    <div class="col-md-6">
+    <% BrightIdea.all.each do |idea| %>
+        <div class="row well well-sm">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="/users/<%= idea.user.id %>"><%= idea.user.alias %></a> says:
+                </div>
+                <div class="col-md-10">
+                    <p><%= idea.content %></p>
+                </div>
+            </div>
+            <div class="row">
+                <% if idea.liked_users.exclude? logged_in_user %>
+                <!-- Like Button -->
+                <div class="col-md-offset-2 col-md-1">
+                    <form action="/likes/create" method="post">
+                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                        <input type="hidden" name="like[user_id]" value="<%= logged_in_user.id %>">
+                        <input type="hidden" name="like[bright_idea_id]" value="<%= idea.id %>">
+                        <input type="submit" value="Like" class="btn btn-primary btn-xs">
+                    </form>
+                </div>
+                <% else %>
+                <!-- Unlike Button -->
+                <div class="col-md-offset-2 col-md-1">
+                    <form action="/likes/destroy" method="get">
+                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                        <input type="hidden" name="like[user_id]" value="<%= logged_in_user.id %>">
+                        <input type="hidden" name="like[bright_idea_id]" value="<%= idea.id %>">
+                        <input type="submit" value="Unlike" class="btn btn-danger btn-xs">
+                    </form>
+                </div>
+                <% end %>
+                <!-- Like Count -->
+                <p class=""><a href="/bright_ideas/<%= idea.id %>"><%= idea.liked_users.count %> people</a> Like this</p>
+                <!-- Delete Idea button -->
+                <% if logged_in_user == idea.user %>
+                <div class="col-md-offset-2 col-md-1">
+                    <form action="/bright_ideas/<%= idea.id %>" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                        <input type="submit" value="Delete Idea" class="btn btn-danger btn-xs">
+                    </form>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+    </div>
+    <div class="col-md-3"></div>
+</div>

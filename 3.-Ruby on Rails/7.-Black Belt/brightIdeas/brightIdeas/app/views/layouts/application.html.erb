@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BrightIdeas</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if logged_in_user %>
+        <div class="navbar navbar-default">
+            <div class="col-md-2"></div>
+            <div class="col-md-9">
+                <p>Welcome <%= logged_in_user.alias %></p>
+                <form action="/sessions" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                    <input type="submit" value="Logout" class="btn btn-danger pull-right">
+                </form>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

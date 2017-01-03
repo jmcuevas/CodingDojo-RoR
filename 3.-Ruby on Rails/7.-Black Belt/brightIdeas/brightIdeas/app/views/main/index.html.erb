@@ -1,0 +1,99 @@
+<h1 class="text-center">Welcome</h1>
+<% if flash[:reg_errors] != nil %>
+    <% flash[:reg_errors].each do |error| %>
+        <p><%= error %></p>
+    <% end %>
+<% end %>
+
+<div class="col-md-2"></div>
+<div class="container col-md-8">
+
+    <div class="well well-lg">
+        <h2>Register</h2>
+        <!-- User Registration Form -->
+        <form action="/users/create" method="post" class="form-horizontal">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <!-- Name -->
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="user[name]" class="control-label">Name:</label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" name="user[name]" class="form-control">
+                </div>
+            </div>
+            <!-- Alias -->
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="user[alias]" class="control-label">Alias:</label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" name="user[alias]" class="form-control">
+                </div>
+            </div>
+            <!-- Email -->
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="user[email]" class="control-label">Email:</label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" name="user[email]" class="form-control">
+                </div>
+            </div>
+            <!-- Password -->
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="user[password]" class="control-label">Password:</label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" name="user[password]" class="form-control">
+                </div>
+            </div>
+            <!-- Password Confirmation -->
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="user[password_confirmation]" class="control-label">Confirm Password:</label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" name="user[password_confirmation]" class="form-control">
+                </div>
+            </div>
+            <!-- Register Button -->
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary col-md-offset-2">
+            </div>
+        </form>
+    </div>
+
+
+    <div class="well well-lg">
+        <h2>Login</h2>
+        <!-- Login form -->
+        <form action="/sessions/create" method="post" class="form-horizontal">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <!-- Email -->
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="user[email]" class="control-label">Email:</label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" name="user[email]" class="form-control">
+                </div>
+            </div>
+            <!-- Password -->
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="user[password]" class="control-label">Password:</label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" name="user[password]" class="form-control">
+                </div>
+            </div>
+            <!-- Login Button -->
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary col-md-offset-2">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="col-md-2"></div>
