@@ -1,0 +1,92 @@
+<a href="/users/<%= logged_in_user.id %>/edit">Edit my profile</a>
+
+<div class="">
+    <h2>Here are some of the events at your state. (<%= logged_in_user.state %>)</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Host</th>
+            <th>Action/ Status</th>
+        </tr>
+        <% Event.all.where(state: logged_in_user.state).each do |event|%>
+        <tr>
+            <td><a href="/events/<%= event.id %>"><%= event.name %></a></td>
+            <td><%= event.date %></td>
+            <td><%= event.city %></td>
+            <td><%= event.user.first_name %> <%= event.user.last_name %></td>
+            <td>
+                <% if event.user != logged_in_user %>
+                    <% if event.users_participating.exclude? logged_in_user %>
+                <a href="/events/<%= logged_in_user.id %>/<%= event.id %>">|Join|</a>
+                    <% else %>
+                <a href="#">Attending</a>
+                    <% end %>
+                <% end %>
+                <% if logged_in_user == event.user %>
+                <a href="/events/<%= event.id %>/edit">|Edit|</a>
+                <form action="/events/<%= event.id %>" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                    <input type="submit" value="Delete Event">
+                </form>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+
+<div class="">
+    <h2>Here are some of the events at other states</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Host</th>
+            <th>Action/ Status</th>
+        </tr>
+        <% Event.all.where.not(state: logged_in_user.state).each do |event|%>
+        <tr>
+            <td><a href="/events/<%= event.id %>"><%= event.name %></a></td>
+            <td><%= event.date %></td>
+            <td><%= event.city %></td>
+            <td><%= event.user.first_name %> <%= event.user.last_name %></td>
+            <td>
+                <% if event.user != logged_in_user %>
+                    <% if event.users_participating.exclude? logged_in_user %>
+                <a href="/events/<%= logged_in_user.id %>/<%= event.id %>">|Join|</a>
+                    <% else %>
+                <a href="#">Attending</a>
+                    <% end %>
+                <% end %>
+                <% if logged_in_user == event.user %>
+                <a href="/events/<%= event.id %>/edit">|Edit|</a>
+                <form action="/events/<%= event.id %>" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                    <input type="submit" value="Delete Event">
+                </form>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+
+<div class="">
+    <h2>Add Event</h2>
+    <% if flash[:event_error] %>
+        <p><%= flash[:event_error] %></p>
+    <% end %>
+    <form action="/events/create" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="event[user_id]" value="<%= logged_in_user.id %>">
+        <p>Name: <input type="text" name="event[name]"></p>
+        <p>Date: <input type="date" name="event[date]"></p>
+        <p>Location: <input type="text" name="event[city]"><input type="text" name="event[state]"></p>
+        <input type="submit" value="Add Event">
+    </form>
+</div>

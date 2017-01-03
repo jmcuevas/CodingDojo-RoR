@@ -1,0 +1,44 @@
+<h1><%= @event.name %></h1>
+
+<div class="">
+    <h3>Host: </h3><p><%= @event.user.first_name %> <%= @event.user.last_name %></p>
+    <h3>Date: </h3><p><%= @event.date %></p>
+    <h3>Location: </h3><p><%= @event.city%>, <%= @event.state %></p>
+    <h3>People who are joining the event: </h3><p><%= @event.users_participating.count %></p>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>State</th>
+        </tr>
+        <% @event.users_participating.each do |participant| %>
+        <tr>
+            <td><%= participant.first_name %> <%= participant.last_name %></td>
+            <td><%= participant.city %></td>
+            <td><%= participant.state %></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+
+<div class="">
+    <h3>Discussion about this event</h3>
+    <div class="">
+        <% @comments.each do |comment| %>
+        <div class="">
+            <p><%= comment.user.first_name %>: <%= comment.content %></p>
+            <p>____________________________________</p>
+        </div>
+        <% end %>
+        <div class="">
+            <h4>Add a comment</h4>
+            <form action="/comments/create" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <input type="hidden" name="comment[user_id]" value="<%= logged_in_user.id %>">
+                <input type="hidden" name="comment[event_id]" value="<%= params[:id] %>">
+                <textarea name="comment[content]" rows="2" cols="50"></textarea>
+                <input type="submit" value="Submit Comments">
+            </form>
+        </div>
+    </div>
+</div>

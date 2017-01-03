@@ -3,6 +3,7 @@ class BrightIdeasController < ApplicationController
   before_action :require_login, only:[:index, :show, :create, :destroy]
 
   def index
+      @ordered_ideas = BrightIdea.order_by_likes
   end
 
   def show
